@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c552yr5nctdkv"]
+
+[ext_resource type="Script" uid="uid://chxrby53wfq6p" path="res://script/main_menu.gd" id="1_3er1b"]
+[ext_resource type="Texture2D" uid="uid://7owlhgeg5d2e" path="res://asset/desktop-wallpaper-plain-vector-white-background-blank-white.jpg" id="2_2fwvj"]
+[ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_hxu56"]
+[ext_resource type="Texture2D" uid="uid://hb43t7nakanw" path="res://asset/stickman_sudoku.png" id="3_0iwki"]
+
+[node name="MainMenu" type="Node2D" unique_id=174243258]
+script = ExtResource("1_3er1b")
+
+[node name="Button_manager" type="Control" parent="." unique_id=1158658019]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="background" type="TextureRect" parent="Button_manager" unique_id=1936750309]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_2fwvj")
+
+[node name="stuff" type="TextureRect" parent="Button_manager" unique_id=360307162]
+layout_mode = 0
+offset_left = 82.0
+offset_top = -10.0
+offset_right = 562.0
+offset_bottom = 590.0
+texture = ExtResource("3_0iwki")
+
+[node name="Label" type="Label" parent="Button_manager" unique_id=1746467993]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 36.0
+offset_right = 449.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0.98122805, 0.5415033, 0.2753447, 1)
+theme_override_fonts/font = ExtResource("2_hxu56")
+theme_override_font_sizes/font_size = 50
+text = "SUDOKU ADVENTURE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="Button_manager" unique_id=1941810151]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 80.0
+offset_right = 1110.0
+offset_bottom = 240.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_hxu56")
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="Setting" type="Button" parent="Button_manager" unique_id=193318081]
+layout_mode = 0
+offset_left = 771.0
+offset_top = 260.0
+offset_right = 1111.0
+offset_bottom = 420.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_hxu56")
+theme_override_font_sizes/font_size = 50
+text = "SETTING"
+
+[node name="Quit" type="Button" parent="Button_manager" unique_id=28180993]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 440.0
+offset_right = 1110.0
+offset_bottom = 600.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_hxu56")
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_manager/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Button_manager/Quit" to="." method="_on_quit_pressed"]

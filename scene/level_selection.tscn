@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bhbewmkwoxrbe"]
+
+[ext_resource type="Script" uid="uid://cpkc02opremjj" path="res://script/level_selection.gd" id="1_4yuie"]
+[ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_6i7ii"]
+
+[node name="Level_selection" type="Node2D" unique_id=1711065677]
+script = ExtResource("1_4yuie")
+
+[node name="level_maneger" type="Control" parent="." unique_id=1675709500]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level_maneger" unique_id=1112392299]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="level_maneger" unique_id=2097670826]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Easy" type="Label" parent="level_maneger/ColorRect" unique_id=445794688]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 246.0
+offset_right = 237.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+text = "EASY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Medium" type="Label" parent="level_maneger/ColorRect" unique_id=1390493137]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 255.0
+offset_right = 635.0
+offset_bottom = 278.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "MEDIUM"
+
+[node name="Hard" type="Label" parent="level_maneger/ColorRect" unique_id=121208462]
+layout_mode = 0
+offset_left = 964.0
+offset_top = 235.0
+offset_right = 1009.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HARD"
+
+[node name="easy_btn" type="Button" parent="level_maneger/ColorRect" unique_id=1766479632]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 500.0
+offset_right = 230.0
+offset_bottom = 532.0
+theme_override_colors/font_color = Color(0.8662184, 0.87862873, 0.8681093, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.9278742, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36091813, 0.7181288, 0.4122855, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_6i7ii")
+theme_override_font_sizes/font_size = 30
+text = "select"
+
+[node name="medium_btn" type="Button" parent="level_maneger/ColorRect" unique_id=1831268005]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 500.0
+offset_right = 650.0
+offset_bottom = 531.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_6i7ii")
+theme_override_font_sizes/font_size = 30
+text = "select"
+
+[node name="hard_btn" type="Button" parent="level_maneger/ColorRect" unique_id=1797819023]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 504.0
+offset_right = 1070.0
+offset_bottom = 535.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_6i7ii")
+theme_override_font_sizes/font_size = 30
+text = "select"
+
+[node name="return_btn" type="Button" parent="level_maneger/ColorRect" unique_id=600026209]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 50.0
+offset_right = 1038.0
+offset_bottom = 58.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+text = "RETURN"
+
+[connection signal="pressed" from="level_maneger/ColorRect/easy_btn" to="." method="_on_easy_btn_pressed"]
+[connection signal="pressed" from="level_maneger/ColorRect/return_btn" to="." method="_on_return_btn_pressed"]

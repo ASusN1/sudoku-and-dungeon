@@ -157,6 +157,7 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		selected_cell = null
 
 
-# Optional: button to generate new puzzle
-# func _on_new_game_pressed():
-#     random_generate_sudoku()
+
+
+func _on_return_to_stage_selection_pressed():
+	get_tree().change_scene_to_file("res://scene/level_selection.tscn")
