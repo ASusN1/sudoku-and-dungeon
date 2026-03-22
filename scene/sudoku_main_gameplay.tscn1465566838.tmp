@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dqomcheq40qsv"]
+
+[ext_resource type="Script" uid="uid://ckgtvbplhcr5u" path="res://script/sudoku_main_gameplay.gd" id="1_dy7c7"]
+[ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_rynyq"]
+
+[node name="Control" type="Control" unique_id=1668399493]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dy7c7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1392706945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=183443799]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=1103144032]
+layout_mode = 2
+columns = 9
+
+[node name="return_to_stage_selection" type="Button" parent="." unique_id=20716396]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 140.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0.6179965, 0.5793303, 0.47656095, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 30
+text = "RETURN"
+
+[node name="hint_btn" type="Button" parent="." unique_id=1697350634]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 125.0
+offset_bottom = 331.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 30
+text = "HINT"
+
+[connection signal="pressed" from="return_to_stage_selection" to="." method="_on_return_to_stage_selection_pressed"]

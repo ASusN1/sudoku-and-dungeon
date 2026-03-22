@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dnhja4ouhsk0g"]
+
+[ext_resource type="Script" uid="uid://7ykwrh2syfmr" path="res://script/setting.gd" id="1_xthoy"]
+
+[node name="Node2D" type="Node2D" unique_id=1471783828]
+script = ExtResource("1_xthoy")
+
+[node name="setting" type="Control" parent="." unique_id=871759720]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="setting" unique_id=1574691269]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="setting/ColorRect" unique_id=1445794214]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 30.0
+offset_right = 1113.0
+offset_bottom = 603.0
+color = Color(0.11805072, 0.39651033, 0.37980968, 1)
+
+[node name="return" type="Button" parent="setting/ColorRect" unique_id=692034988]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 32.0
+offset_right = 113.0
+offset_bottom = 93.0
+text = "RETURN"
+
+[node name="bug_report_github" type="LinkButton" parent="setting/ColorRect" unique_id=2029822450]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 98.0
+offset_right = 361.0
+offset_bottom = 138.0
+text = "Report bugs for suggestion"
+
+[node name="music_on_of" type="CheckButton" parent="setting/ColorRect" unique_id=1225963489]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 50.0
+offset_right = 303.0
+offset_bottom = 81.0
+text = "MUSIC ON OF"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="setting/ColorRect" unique_id=1730730726]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 57.0
+offset_right = 1059.0
+offset_bottom = 397.0
+
+[connection signal="pressed" from="setting/ColorRect/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="setting/ColorRect/music_on_of" to="." method="_on_music_on_of_pressed"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ckgtvbplhcr5u" path="res://script/sudoku_main_gameplay.gd" id="1_dy7c7"]
 [ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_rynyq"]
+[ext_resource type="Script" uid="uid://cw8yoqmmnqq3p" path="res://script/timer_maneger.gd" id="3_wpeuu"]
+[ext_resource type="Texture2D" uid="uid://bhylmuipqkj08" path="res://asset/3_stars-full-sprite.png" id="4_o056p"]
 
 [node name="Control" type="Control" unique_id=1668399493]
 layout_mode = 3
@@ -52,4 +54,96 @@ theme_override_fonts/font = ExtResource("2_rynyq")
 theme_override_font_sizes/font_size = 30
 text = "RETURN"
 
+[node name="hint_btn" type="Button" parent="." unique_id=1697350634]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 125.0
+offset_bottom = 331.0
+theme_override_colors/font_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_colors/font_hover_color = Color(0.36078432, 0.7176471, 0.4117647, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.92941177, 0, 1)
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 30
+text = "HINT"
+
+[node name="hint_count" type="Label" parent="hint_btn" unique_id=1786051970]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 74.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
+text = "#"
+
+[node name="timer_maneger" type="Panel" parent="." unique_id=1487863006]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 14.0
+offset_right = 710.0
+offset_bottom = 54.0
+script = ExtResource("3_wpeuu")
+
+[node name="timer_min" type="Label" parent="timer_maneger" unique_id=1484980608]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 40.0
+text = "00: "
+horizontal_alignment = 2
+
+[node name="timer_sec" type="Label" parent="timer_maneger" unique_id=613384414]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 160.0
+offset_bottom = 40.0
+text = "00: "
+horizontal_alignment = 2
+
+[node name="timer_minisec" type="Label" parent="timer_maneger" unique_id=2134672653]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 240.0
+offset_bottom = 40.0
+text = "00: "
+horizontal_alignment = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1937003867]
+layout_mode = 0
+offset_left = 903.0
+offset_top = 107.0
+offset_right = 1148.0
+offset_bottom = 372.0
+
+[node name="objective_text" type="Label" parent="Panel" unique_id=131073022]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 112.0
+offset_right = 171.0
+offset_bottom = 135.0
+text = "OBJECTIVE"
+
+[node name="objective_goal" type="Label" parent="Panel" unique_id=962874777]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 142.0
+offset_right = 229.0
+offset_bottom = 243.0
+text = "Win the game : 1 Star 
+Used 3 hint Max : 1 Star
+Have less 5 wrong : 1 Star
+"
+
+[node name="Label3" type="Label" parent="Panel" unique_id=1776586593]
+layout_mode = 0
+offset_left = -903.0
+offset_top = -117.0
+offset_right = -863.0
+offset_bottom = -94.0
+
+[node name="3Stars0-gameplay" type="Sprite2D" parent="." unique_id=335530286]
+position = Vector2(1025, 152)
+scale = Vector2(0.5472222, 0.490991)
+texture = ExtResource("4_o056p")
+
 [connection signal="pressed" from="return_to_stage_selection" to="." method="_on_return_to_stage_selection_pressed"]
+[connection signal="pressed" from="hint_btn" to="." method="_on_hint_btn_pressed"]

@@ -10,14 +10,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_start_pressed ()-> void:
-	get_tree().change_scene_to_file("res://scene/level_selection.tscn")
 
 
-func _on_setting_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/setting.tscn")
+func _on_return_pressed() -> void:
+	get_tree().change_scene_to_file("res://scene/main_menu.tscn")
 
 
 
-func _on_quit_pressed() -> void:
-	get_tree().quit()
+func _on_music_on_of_pressed() -> void:
+	pass # Replace with function body.
