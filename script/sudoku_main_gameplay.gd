@@ -1,7 +1,17 @@
 extends Control
 
+const DevMode = preload("res://script/dev_mode.gd")
+
 @onready var grid_container: GridContainer = $CenterContainer/GridContainer
 @onready var hint_count_label: Label = get_node_or_null("hint_btn/hint_count")
+@onready var pencil_sound: AudioStreamPlayer = get_node_or_null("pencil_sound")
+@onready var stars_sprite: Sprite2D = get_node_or_null("3Stars0-gameplay")
+@onready var end_game_layer: CanvasLayer = get_node_or_null("End_game")
+
+const STAR_TEX_3 := preload("res://asset/3_stars-full3.png")
+const STAR_TEX_2 := preload("res://asset/3_stars-2.png")
+const STAR_TEX_1 := preload("res://asset/3_stars-1.png")
+const STAR_TEX_0 := preload("res://asset/3_stars-0.png")
 
 const NUMBER_ACTIONS := {
 	"One": 1,"Two": 2,"Three": 3,"Four": 4,"Five": 5,
@@ -17,8 +27,13 @@ var selected_cell: Button = null
 var difficulty: String = "easy"
 var hints_remaining: int = 10
 var max_hints: int = 10
+var wrong_moves: int = 0
+var game_completed: bool = false
+@export var dev_mode: bool = true
 
 func _ready() -> void:
+	DevMode.set_allow_hints_after_max(dev_mode)
+
 	if get_tree().has_meta("selected_difficulty"):
 		difficulty = str(get_tree().get_meta("selected_difficulty"))
 
@@ -37,6 +52,10 @@ func _ready() -> void:
 	
 	hints_remaining = max_hints
 	update_hint_label()
+	if stars_sprite:
+		stars_sprite.hframes = 1
+		stars_sprite.vframes = 1
+	update_star_texture()
 
 	random_generate_sudoku()
 
@@ -127,7 +146,13 @@ func place_number(number: int) -> void:
 		selected_cell.text = str(number)
 		board_data[idx] = number
 		selected_cell.modulate = Color.WHITE
+		if pencil_sound:
+			pencil_sound.stop()
+			pencil_sound.play()
+		check_game_completed()
 	else:
+		wrong_moves += 1
+		update_star_texture()
 		selected_cell.text = ""
 		board_data[idx] = 0
 		selected_cell.modulate = Color(1.0, 0.4, 0.4, 1)
@@ -176,7 +201,7 @@ func _on_return_to_stage_selection_pressed():
 	
 
 func _on_hint_btn_pressed() -> void:
-	if hints_remaining <= 0:
+	if not DevMode.can_use_hint(hints_remaining):
 		print("No hints remaining!")
 		return
 
@@ -201,8 +226,10 @@ func _on_hint_btn_pressed() -> void:
 		btn.text = str(solution_value)
 		btn.modulate = Color(0.7, 1.0, 0.7, 1)
 
-	hints_remaining -= 1
+	hints_remaining = DevMode.consume_hint(hints_remaining)
 	update_hint_label()
+	update_star_texture()
+	check_game_completed()
 
 
 func update_hint_label() -> void:
@@ -210,3 +237,48 @@ func update_hint_label() -> void:
 		hint_count_label.text = "Hints: %d/%d" % [hints_remaining, max_hints]
 	else:
 		push_warning("hint_btn/hint_count label not found in scene.")
+
+
+func update_star_texture() -> void:
+	if not stars_sprite:
+		return
+
+	var stars := get_current_stars()
+
+	match stars:
+		3:
+			stars_sprite.texture = STAR_TEX_3
+		2:
+			stars_sprite.texture = STAR_TEX_2
+		1:
+			stars_sprite.texture = STAR_TEX_1
+		_:
+			stars_sprite.texture = STAR_TEX_0
+
+
+func get_current_stars() -> int:
+	var hints_used = max_hints - hints_remaining
+	var stars := 3
+	if hints_used > 3:
+		stars -= 1
+	if wrong_moves >= 5:
+		stars -= 1
+	return clamp(stars, 1, 3)
+
+
+func check_game_completed() -> void:
+	if game_completed:
+		return
+
+	for value in board_data:
+		if int(value) == 0:
+			return
+
+	game_completed = true
+	if end_game_layer and end_game_layer.has_method("setup_and_show"):
+		end_game_layer.call("setup_and_show", get_current_stars(), difficulty)
+
+
+func set_allow_hints_after_max_for_testing(enabled: bool) -> void:
+	dev_mode = enabled
+	DevMode.set_allow_hints_after_max(enabled)

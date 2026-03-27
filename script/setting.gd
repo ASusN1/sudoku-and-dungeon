@@ -1,12 +1,10 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -18,4 +16,14 @@ func _on_return_pressed() -> void:
 
 
 func _on_music_on_of_pressed() -> void:
-	pass # Replace with function body.
+	var music_player = _get_background_music_player()
+	if music_player == null:
+		return
+
+	music_player.stream_paused = not music_player.stream_paused
+	if not music_player.stream_paused and not music_player.playing:
+		music_player.play()
+
+
+func _get_background_music_player() -> AudioStreamPlayer:
+	return get_node_or_null("/root/BackgroundMusic/background_music") as AudioStreamPlayer

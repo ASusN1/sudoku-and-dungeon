@@ -4,6 +4,8 @@
 [ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_rynyq"]
 [ext_resource type="Script" uid="uid://cw8yoqmmnqq3p" path="res://script/timer_maneger.gd" id="3_wpeuu"]
 [ext_resource type="Texture2D" uid="uid://bhylmuipqkj08" path="res://asset/3_stars-full-sprite.png" id="4_o056p"]
+[ext_resource type="AudioStream" uid="uid://bnjy7fipj022t" path="res://asset/pencil_drawing.mp3" id="5_sh8tq"]
+[ext_resource type="Script" uid="uid://b6obsafdjksic" path="res://script/end_game_layer.gd" id="6_endgm"]
 
 [node name="Control" type="Control" unique_id=1668399493]
 layout_mode = 3
@@ -88,6 +90,8 @@ script = ExtResource("3_wpeuu")
 layout_mode = 0
 offset_right = 80.0
 offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 40
 text = "00: "
 horizontal_alignment = 2
 
@@ -96,6 +100,8 @@ layout_mode = 0
 offset_left = 80.0
 offset_right = 160.0
 offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 40
 text = "00: "
 horizontal_alignment = 2
 
@@ -104,6 +110,8 @@ layout_mode = 0
 offset_left = 160.0
 offset_right = 240.0
 offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 40
 text = "00: "
 horizontal_alignment = 2
 
@@ -120,18 +128,24 @@ offset_left = 91.0
 offset_top = 112.0
 offset_right = 171.0
 offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 30
 text = "OBJECTIVE"
 
 [node name="objective_goal" type="Label" parent="Panel" unique_id=962874777]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 142.0
-offset_right = 229.0
-offset_bottom = 243.0
+offset_left = 4.0
+offset_top = 141.0
+offset_right = 248.0
+offset_bottom = 259.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 25
 text = "Win the game : 1 Star 
 Used 3 hint Max : 1 Star
 Have less 5 wrong : 1 Star
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Panel" unique_id=1776586593]
 layout_mode = 0
@@ -141,9 +155,83 @@ offset_right = -863.0
 offset_bottom = -94.0
 
 [node name="3Stars0-gameplay" type="Sprite2D" parent="." unique_id=335530286]
-position = Vector2(1025, 152)
-scale = Vector2(0.5472222, 0.490991)
+position = Vector2(1025.75, 163)
+scale = Vector2(0.6791664, 0.490991)
 texture = ExtResource("4_o056p")
+hframes = 2
+vframes = 2
+
+[node name="pencil_sound" type="AudioStreamPlayer" parent="." unique_id=783092850]
+stream = ExtResource("5_sh8tq")
+
+[node name="End_game" type="CanvasLayer" parent="." unique_id=629994432]
+visible = false
+script = ExtResource("6_endgm")
+
+[node name="Panel" type="Panel" parent="End_game" unique_id=1469154169]
+offset_left = 336.0
+offset_top = 79.0
+offset_right = 827.0
+offset_bottom = 554.0
+
+[node name="Label" type="Label" parent="End_game/Panel" unique_id=1191803750]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 29.0
+offset_right = 371.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 28
+text = "Puzzle Complete!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="End_game/Panel" unique_id=917426542]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 72.0
+offset_right = 356.0
+offset_bottom = 95.0
+text = "Your stars"
+horizontal_alignment = 1
+
+[node name="3Stars0-gameplay2" type="Sprite2D" parent="End_game/Panel" unique_id=44557218]
+position = Vector2(247.875, 147.25002)
+scale = Vector2(1.367361, 1.3040541)
+texture = ExtResource("4_o056p")
+hframes = 2
+vframes = 2
+
+[node name="play_again_btn" type="Button" parent="End_game/Panel" unique_id=1177424751]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 243.0
+offset_right = 351.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 28
+text = "PLAY AGAIN"
+
+[node name="next_level_btn" type="Button" parent="End_game/Panel" unique_id=1677013235]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 308.0
+offset_right = 351.0
+offset_bottom = 343.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 28
+text = "NEXT LEVEL"
+
+[node name="return_to_menu_btn" type="Button" parent="End_game/Panel" unique_id=194434332]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 373.0
+offset_right = 351.0
+offset_bottom = 408.0
+theme_override_fonts/font = ExtResource("2_rynyq")
+theme_override_font_sizes/font_size = 28
+text = "RETURN"
 
 [connection signal="pressed" from="return_to_stage_selection" to="." method="_on_return_to_stage_selection_pressed"]
 [connection signal="pressed" from="hint_btn" to="." method="_on_hint_btn_pressed"]
+[connection signal="pressed" from="End_game/Panel/play_again_btn" to="End_game" method="_on_play_again_btn_pressed"]
+[connection signal="pressed" from="End_game/Panel/next_level_btn" to="End_game" method="_on_next_level_btn_pressed"]
+[connection signal="pressed" from="End_game/Panel/return_to_menu_btn" to="End_game" method="_on_return_to_menu_btn_pressed"]

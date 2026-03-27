@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpkc02opremjj" path="res://script/level_selection.gd" id="1_4yuie"]
 [ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_6i7ii"]
-[ext_resource type="Texture2D" uid="uid://7y4qsggccuff" path="res://icon.svg" id="3_cm7rv"]
+[ext_resource type="Texture2D" uid="uid://c3b78hnw65g5c" path="res://asset/sudoku_png.png" id="4_bgbrv"]
 [ext_resource type="Texture2D" uid="uid://lxudnqxuiogh" path="res://asset/3_stars-0.png" id="4_jq3no"]
 
 [node name="Level_selection" type="Node2D" unique_id=1711065677]
@@ -23,20 +23,23 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+color = Color(0.28627452, 0.4862745, 0.8627451, 1)
 
-[node name="Easy" type="Label" parent="level_maneger/ColorRect" unique_id=445794688]
+[node name="star3" type="TextureRect" parent="level_maneger/ColorRect" unique_id=18950697]
 layout_mode = 0
-offset_left = 119.0
-offset_top = 80.0
-offset_right = 194.0
-offset_bottom = 111.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_6i7ii")
-theme_override_font_sizes/font_size = 30
-text = "EASY"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 813.0
+offset_top = 283.0
+offset_right = 1173.0
+offset_bottom = 505.0
+texture = ExtResource("4_jq3no")
+
+[node name="star2" type="TextureRect" parent="level_maneger/ColorRect" unique_id=1883178342]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 277.0
+offset_right = 761.0
+offset_bottom = 499.0
+texture = ExtResource("4_jq3no")
 
 [node name="Medium" type="Label" parent="level_maneger/ColorRect" unique_id=1390493137]
 layout_mode = 0
@@ -48,6 +51,19 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_6i7ii")
 theme_override_font_sizes/font_size = 30
 text = "MEDIUM"
+horizontal_alignment = 1
+
+[node name="Easy" type="Label" parent="level_maneger/ColorRect" unique_id=2071142136]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 80.0
+offset_right = 225.0
+offset_bottom = 131.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6i7ii")
+theme_override_font_sizes/font_size = 30
+text = "Easy
+"
 horizontal_alignment = 1
 
 [node name="Hard" type="Label" parent="level_maneger/ColorRect" unique_id=121208462]
@@ -115,48 +131,36 @@ text = "RETURN"
 
 [node name="hard_pic" type="TextureRect" parent="level_maneger/ColorRect" unique_id=400483559]
 layout_mode = 0
-offset_left = 818.0
-offset_top = 142.0
-offset_right = 1138.0
-offset_bottom = 322.0
-texture = ExtResource("3_cm7rv")
+offset_left = 887.0
+offset_top = 126.0
+offset_right = 1365.0
+offset_bottom = 600.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_bgbrv")
 
 [node name="medium_pic" type="TextureRect" parent="level_maneger/ColorRect" unique_id=520566175]
 layout_mode = 0
-offset_left = 425.0
-offset_top = 140.0
-offset_right = 745.0
-offset_bottom = 320.0
-texture = ExtResource("3_cm7rv")
+offset_left = 491.0
+offset_top = 130.0
+offset_right = 969.0
+offset_bottom = 604.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_bgbrv")
 
 [node name="easy_pic" type="TextureRect" parent="level_maneger/ColorRect" unique_id=1055914062]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 141.0
-offset_right = 338.0
-offset_bottom = 321.0
-texture = ExtResource("3_cm7rv")
+offset_left = 87.99999
+offset_top = 128.0
+offset_right = 566.0
+offset_bottom = 602.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_bgbrv")
 
 [node name="star" type="TextureRect" parent="level_maneger/ColorRect" unique_id=57565542]
 layout_mode = 0
 offset_top = 275.0
 offset_right = 360.0
 offset_bottom = 497.0
-texture = ExtResource("4_jq3no")
-
-[node name="star" type="TextureRect" parent="." unique_id=1883178342]
-offset_left = 401.0
-offset_top = 277.0
-offset_right = 761.0
-offset_bottom = 499.0
-texture = ExtResource("4_jq3no")
-
-[node name="star" type="TextureRect" parent="star" unique_id=18950697]
-layout_mode = 0
-offset_left = 412.0
-offset_top = 6.0
-offset_right = 772.0
-offset_bottom = 228.0
 texture = ExtResource("4_jq3no")
 
 [connection signal="pressed" from="level_maneger/ColorRect/easy_btn" to="." method="_on_easy_btn_pressed"]

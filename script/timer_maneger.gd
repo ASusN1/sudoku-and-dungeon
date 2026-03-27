@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 	$timer_minisec.text = "%02d" % timer_minisec
 
 func stop() -> void:
-	# Stop timer when the user presses return or completes the game
 	set_process(false)
 
 func get_time_formatted() -> String:

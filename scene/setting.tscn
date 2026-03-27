@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dnhja4ouhsk0g"]
 
 [ext_resource type="Script" uid="uid://7ykwrh2syfmr" path="res://script/setting.gd" id="1_xthoy"]
+[ext_resource type="FontFile" uid="uid://cv82ane213r5u" path="res://asset/m5x7.ttf" id="2_g2to7"]
+[ext_resource type="VideoStream" uid="uid://cmkb5qgvua7u6" path="res://asset/tutorial_video.ogv" id="3_g2to7"]
 
 [node name="Node2D" type="Node2D" unique_id=1471783828]
 script = ExtResource("1_xthoy")
@@ -34,11 +36,13 @@ text = "RETURN"
 
 [node name="bug_report_github" type="LinkButton" parent="setting/ColorRect" unique_id=2029822450]
 layout_mode = 0
-offset_left = 153.0
-offset_top = 98.0
-offset_right = 361.0
-offset_bottom = 138.0
-text = "Report bugs for suggestion"
+offset_left = 156.0
+offset_top = 121.0
+offset_right = 364.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("2_g2to7")
+theme_override_font_sizes/font_size = 30
+text = "report bug or suggestion"
 
 [node name="music_on_of" type="CheckButton" parent="setting/ColorRect" unique_id=1225963489]
 layout_mode = 0
@@ -46,14 +50,19 @@ offset_left = 149.0
 offset_top = 50.0
 offset_right = 303.0
 offset_bottom = 81.0
-text = "MUSIC ON OF"
+theme_override_fonts/font = ExtResource("2_g2to7")
+theme_override_font_sizes/font_size = 50
+text = "Music On/Off"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="setting/ColorRect" unique_id=1730730726]
 layout_mode = 0
-offset_left = 529.0
-offset_top = 57.0
-offset_right = 1059.0
-offset_bottom = 397.0
+offset_left = 429.0
+offset_top = 71.0
+offset_right = 1709.0
+offset_bottom = 791.0
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("3_g2to7")
+autoplay = true
 
 [connection signal="pressed" from="setting/ColorRect/return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="setting/ColorRect/music_on_of" to="." method="_on_music_on_of_pressed"]
