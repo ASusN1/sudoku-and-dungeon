@@ -80,7 +80,6 @@ I used the Ouch! CLI tool for decompression of files <br />
 This project was built using one simple, yet powerful language.<br />
 It required a lot of workarounds, but it was a pleasure to use it
 * [![GDScript][Godot]][Godot-url]
-* [![Ouch!][Ouch-shield]][Ouch-url]
 
 <p align="right">(<a href="#readme-top">top</a>)</p>
 
