@@ -61,6 +61,3 @@ You can download or clone this repository:
 
 If you enjoy the game, please consider leaving a rating. Your feedback helps others discover it and supports future improvements.
 
----
-
-If you want, I can make it more “professional,” more “fun/game-like,” or tailored specifically for GitHub/itch.io audiences.
